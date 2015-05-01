@@ -5,9 +5,9 @@ var Qux = (function () {
     this.events = {};
   }
 
-  var counter = -1;
+  var uid = -1;
 
-  Qux.prototype.emit = function (ev, data) {
+  Qux.prototype.publish = function (ev, data) {
     if (typeof this.events[ev] === 'undefined') {
       return false;
     }
@@ -18,15 +18,16 @@ var Qux = (function () {
     for (var i = 0; i < len; i++) {
       q[i].fn(ev, data);
     }
+    return true;
   };
 
-  Qux.prototype.on = function (ev, fn) {
+  Qux.prototype.subscribe = function (ev, fn) {
     // if event not already registered, add it
     if (typeof this.events[ev] === 'undefined') {
       this.events[ev] = [];
     }
 
-    var token = ++counter;
+    var token = ++uid;
 
     this.events[ev].push({
       token: token,
@@ -34,7 +35,7 @@ var Qux = (function () {
     });
   };
 
-  Qux.prototype.remove = function (token) {
+  Qux.prototype.unsubscribe = function (token) {
     for (var e in this.events) {
       var q = this.events[e];
       for (var i = 0; i < q.length; i++) {

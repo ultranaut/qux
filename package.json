@@ -1,0 +1,26 @@
+{
+  "name": "qux",
+  "version": "0.9.0",
+  "description": "The pub/sub I need right now.",
+  "main": "qux.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ultranaut/qux.git"
+  },
+  "author": "John Shearer <john@ultranaut.com> (http://ultranaut.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ultranaut/qux/issues"
+  },
+  "homepage": "https://github.com/ultranaut/qux",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.10.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.0",
+    "jshint-stylish": "^1.0.1"
+  }
+}
