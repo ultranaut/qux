@@ -1,5 +1,3 @@
-/* jshint node: true */
-
 (function () {
   'use strict';
 
@@ -58,18 +56,6 @@
     module.exports = Qux;
   }
   else {
-   root.Qux = Qux;
+    root.Qux = Qux;
   }
 }).call(this);
-
-
-
-
-
-
-
-
-
-
-
-
