@@ -1,51 +1,75 @@
-var Qux = (function () {
+/* jshint node: true */
+
+(function () {
   'use strict';
 
-  function Qux () {
-    this.events = {};
-  }
-
+  var root = this;
   var uid = -1;
 
-  Qux.prototype.publish = function (ev, data) {
-    if (typeof this.events[ev] === 'undefined') {
+  function Qux () {
+    this.topics = {};
+  }
+
+  Qux.prototype.publish = function (topic, data) {
+    if (typeof this.topics[topic] === 'undefined') {
       return false;
     }
 
-    var q = this.events[ev];
-    var len = q.length;
+    var queue = this.topics[topic];
+    var len = queue.length;
 
     for (var i = 0; i < len; i++) {
-      q[i].fn(ev, data);
+      queue[i].cb(data);
     }
     return true;
   };
 
-  Qux.prototype.subscribe = function (ev, fn) {
-    // if event not already registered, add it
-    if (typeof this.events[ev] === 'undefined') {
-      this.events[ev] = [];
-    }
-
+  Qux.prototype.subscribe = function (topic, cb) {
     var token = ++uid;
 
-    this.events[ev].push({
+    // if event not already registered, add it
+    if (typeof this.topics[topic] === 'undefined') {
+      this.topics[topic] = [];
+    }
+
+    this.topics[topic].push({
       token: token,
-      fn: fn
+      cb: cb
     });
+
+    return token;
   };
 
   Qux.prototype.unsubscribe = function (token) {
-    for (var e in this.events) {
-      var q = this.events[e];
-      for (var i = 0; i < q.length; i++) {
-        if (q[i].token === token) {
-          q.splice(i, 1);
+    for (var topic in this.topics) {
+      var queue = this.topics[topic];
+      for (var i = 0; i < queue.length; i++) {
+        if (queue[i].token === token) {
+          queue.splice(i, 1);
+          return true;
         }
       }
     }
+    return false;
   };
 
-  return Qux;
-})();
+  if (typeof module !== 'undefined' &&
+      typeof module.exports !== 'undefined') {
+    module.exports = Qux;
+  }
+  else {
+   root.Qux = Qux;
+  }
+}).call(this);
+
+
+
+
+
+
+
+
+
+
+
 
