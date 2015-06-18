@@ -1,8 +1,14 @@
 {
   "name": "qux",
-  "version": "0.9.0",
-  "description": "The pub/sub I need right now.",
+  "version": "0.4.0",
+  "description": "An absurdly simple pub/sub implementation.",
   "main": "qux.js",
+  "keywords": [
+    "pubsub",
+    "browser",
+    "server",
+    "util"
+  ],
   "scripts": {
     "prepublish": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +17,7 @@
     "type": "git",
     "url": "https://github.com/ultranaut/qux.git"
   },
-  "author": "John Shearer <john@ultranaut.com> (http://ultranaut.com)",
+  "author": "John Shearer <john@ultranaut.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ultranaut/qux/issues"
@@ -24,5 +30,10 @@
     "gulp-plumber": "^1.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.2.0"
-  }
+  },
+  "files": [
+    "qux.js",
+    "qux.min.js",
+    "LICENSE"
+  ]
 }
