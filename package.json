@@ -10,7 +10,6 @@
     "util"
   ],
   "scripts": {
-    "prepublish": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
