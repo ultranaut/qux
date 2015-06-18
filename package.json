@@ -17,11 +17,9 @@
   },
   "homepage": "https://github.com/ultranaut/qux",
   "devDependencies": {
-    "del": "^1.2.0",
     "eslint": "^0.23.0",
     "gulp": "^3.8.11",
     "gulp-eslint": "^0.14.0",
-    "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.2.0"

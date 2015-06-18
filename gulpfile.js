@@ -1,16 +1,11 @@
 'use strict';
 var gulp = require('gulp');
-var del = require('del');
 var plumber = require('gulp-plumber');
 var lint = require('gulp-eslint');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 
-var srcFile = 'src/*.js';
-
-gulp.task('clean', function (cb) {
-  del(['dist'], cb);
-});
+var srcFile = './qux.js';
 
 gulp.task('lint', function () {
   // run as async so that minify won't run if there are errors
@@ -25,13 +20,10 @@ gulp.task('minify', ['lint'], function () {
   gulp.src(srcFile)
       .pipe(uglify())
       .pipe(rename({ suffix: '.min' }))
-      .pipe(gulp.dest('dist/'));
+      .pipe(gulp.dest('./'));
 });
 
-gulp.task('build', ['lint', 'clean', 'minify'], function () {
-  gulp.src(srcFile)
-      .pipe(gulp.dest('dist/'));
-});
+gulp.task('build', ['lint', 'minify']);
 
 /* --- watch ------------------------------------------------------- */
 gulp.task('watch', function () {
