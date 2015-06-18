@@ -4,6 +4,7 @@
   "description": "The pub/sub I need right now.",
   "main": "qux.js",
   "scripts": {
+    "prepublish": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
